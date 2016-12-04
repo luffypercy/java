@@ -23,19 +23,21 @@
 		            </tr>
 		        </thead>
 		        <tbody>
-					<c:forEach items="${teams}" var="item">
-		            <tr>
-					    <td>${item.name }</td>
-					    <td><c:forEach items="${item.playper_account_ids }" var="p">
-					   <a target="_blank" href="${players[p].profileurl}"> ${players[p].personaname}</a>
-					    <img src="${players[p].avatar}"/>
-					    </c:forEach></td>
-					    <td>${item.admin_account_id }</td>
+		            <c:forEach items="${dblist}" var="item">
+		             <tr>
+					    <td>${item}</td>
+					    <td>
+					     <c:forEach items="${colist[item] }" var="coi">
+					     <th>
+					     ${coi }
+					     </th>
+		           		 </c:forEach>
+					    </td>
 		            </tr>
 		            </c:forEach>
 		            
-		            
 		        </tbody>
+		        
 		    </table>
 </body>
 </html>
