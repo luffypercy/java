@@ -24,10 +24,11 @@
 		    <version>3.4.0</version>
 		</dependency>
 		<!-- weixin4j -->
+		<!-- https://mvnrepository.com/artifact/org.weixin4j/weixin4j -->
 		<dependency>
-		    <groupId>cn.songxinqiang</groupId>
+		    <groupId>org.weixin4j</groupId>
 		    <artifactId>weixin4j</artifactId>
-		    <version>1.2.2</version>
+		    <version>0.0.7</version>
 		</dependency>
 		<!-- spring核心包 -->
 		<!-- springframe start -->
