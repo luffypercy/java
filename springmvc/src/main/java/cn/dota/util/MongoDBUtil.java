@@ -23,35 +23,35 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.result.DeleteResult;
 
 /**
- * MongoDB¹¤¾ßÀà MongoÊµÀı´ú±íÁËÒ»¸öÊı¾İ¿âÁ¬½Ó³Ø£¬¼´Ê¹ÔÚ¶àÏß³ÌµÄ»·¾³ÖĞ£¬Ò»¸öMongoÊµÀı¶ÔÎÒÃÇÀ´ËµÒÑ¾­×ã¹»ÁË<br>
- * ×¢ÒâMongoÒÑ¾­ÊµÏÖÁËÁ¬½Ó³Ø£¬²¢ÇÒÊÇÏß³Ì°²È«µÄ¡£ <br>
- * Éè¼ÆÎªµ¥ÀıÄ£Ê½£¬ Òò MongoDBµÄJavaÇı¶¯ÊÇÏß³Ì°²È«µÄ£¬¶ÔÓÚÒ»°ãµÄÓ¦ÓÃ£¬Ö»ÒªÒ»¸öMongoÊµÀı¼´¿É£¬<br>
- * MongoÓĞ¸öÄÚÖÃµÄÁ¬½Ó³Ø£¨Ä¬ÈÏÎª10¸ö£© ¶ÔÓÚÓĞ´óÁ¿Ğ´ºÍ¶ÁµÄ»·¾³ÖĞ£¬ÎªÁËÈ·±£ÔÚÒ»¸öSessionÖĞÊ¹ÓÃÍ¬Ò»¸öDBÊ±£¬<br>
- * DBºÍDBCollectionÊÇ¾ø¶ÔÏß³Ì°²È«µÄ<br>
+ * MongoDBå·¥å…·ç±» Mongoå®ä¾‹ä»£è¡¨äº†ä¸€ä¸ªæ•°æ®åº“è¿æ¥æ± ï¼Œå³ä½¿åœ¨å¤šçº¿ç¨‹çš„ç¯å¢ƒä¸­ï¼Œä¸€ä¸ªMongoå®ä¾‹å¯¹æˆ‘ä»¬æ¥è¯´å·²ç»è¶³å¤Ÿäº†<br>
+ * æ³¨æ„Mongoå·²ç»å®ç°äº†è¿æ¥æ± ï¼Œå¹¶ä¸”æ˜¯çº¿ç¨‹å®‰å…¨çš„ã€‚ <br>
+ * è®¾è®¡ä¸ºå•ä¾‹æ¨¡å¼ï¼Œ å›  MongoDBçš„Javaé©±åŠ¨æ˜¯çº¿ç¨‹å®‰å…¨çš„ï¼Œå¯¹äºä¸€èˆ¬çš„åº”ç”¨ï¼Œåªè¦ä¸€ä¸ªMongoå®ä¾‹å³å¯ï¼Œ<br>
+ * Mongoæœ‰ä¸ªå†…ç½®çš„è¿æ¥æ± ï¼ˆé»˜è®¤ä¸º10ä¸ªï¼‰ å¯¹äºæœ‰å¤§é‡å†™å’Œè¯»çš„ç¯å¢ƒä¸­ï¼Œä¸ºäº†ç¡®ä¿åœ¨ä¸€ä¸ªSessionä¸­ä½¿ç”¨åŒä¸€ä¸ªDBæ—¶ï¼Œ<br>
+ * DBå’ŒDBCollectionæ˜¯ç»å¯¹çº¿ç¨‹å®‰å…¨çš„<br>
  * 
  * @author zhoulingfei
- * @date 2015-5-29 ÉÏÎç11:49:49
+ * @date 2015-5-29 ä¸Šåˆ11:49:49
  * @version 0.0.0
  * @Copyright (c)1997-2015 NavInfo Co.Ltd. All Rights Reserved.
  */
 public enum MongoDBUtil {
 
     /**
-     * ¶¨ÒåÒ»¸öÃ¶¾ÙµÄÔªËØ£¬Ëü´ú±í´ËÀàµÄÒ»¸öÊµÀı
+     * å®šä¹‰ä¸€ä¸ªæšä¸¾çš„å…ƒç´ ï¼Œå®ƒä»£è¡¨æ­¤ç±»çš„ä¸€ä¸ªå®ä¾‹
      */
     instance;
 
     private MongoClient mongoClient;
 
     static {
-        System.out.println("===============MongoDBUtil³õÊ¼»¯========================");
+        System.out.println("===============MongoDBUtilåˆå§‹åŒ–========================");
         CompositeConfiguration config = new CompositeConfiguration();
         try {
             config.addConfiguration(new PropertiesConfiguration("mongodb.properties"));
         } catch (ConfigurationException e) {
             e.printStackTrace();
         }
-        // ´ÓÅäÖÃÎÄ¼şÖĞ»ñÈ¡ÊôĞÔÖµ
+        // ä»é…ç½®æ–‡ä»¶ä¸­è·å–å±æ€§å€¼
         String ip = config.getString("host");
         int port = config.getInt("port");
         instance.mongoClient = new MongoClient(ip, port);
@@ -60,23 +60,23 @@ public enum MongoDBUtil {
         // List<ServerAddress> listHost = Arrays.asList(new ServerAddress("localhost", 27017),new ServerAddress("localhost", 27018));
         // instance.mongoClient = new MongoClient(listHost);
 
-        // ´ó²¿·ÖÓÃ»§Ê¹ÓÃmongodb¶¼ÔÚ°²È«ÄÚÍøÏÂ£¬µ«Èç¹û½«mongodbÉèÎª°²È«ÑéÖ¤Ä£Ê½£¬¾ÍĞèÒªÔÚ¿Í»§¶ËÌá¹©ÓÃ»§ÃûºÍÃÜÂë£º
+        // å¤§éƒ¨åˆ†ç”¨æˆ·ä½¿ç”¨mongodbéƒ½åœ¨å®‰å…¨å†…ç½‘ä¸‹ï¼Œä½†å¦‚æœå°†mongodbè®¾ä¸ºå®‰å…¨éªŒè¯æ¨¡å¼ï¼Œå°±éœ€è¦åœ¨å®¢æˆ·ç«¯æä¾›ç”¨æˆ·åå’Œå¯†ç ï¼š
         // boolean auth = db.authenticate(myUserName, myPassword);
         Builder options = new MongoClientOptions.Builder();
-        // options.autoConnectRetry(true);// ×Ô¶¯ÖØÁ¬true
+        // options.autoConnectRetry(true);// è‡ªåŠ¨é‡è¿true
         // options.maxAutoConnectRetryTime(10); // the maximum auto connect retry time
-        options.connectionsPerHost(300);// Á¬½Ó³ØÉèÖÃÎª300¸öÁ¬½Ó,Ä¬ÈÏÎª100
-        options.connectTimeout(15000);// Á¬½Ó³¬Ê±£¬ÍÆ¼ö>3000ºÁÃë
+        options.connectionsPerHost(300);// è¿æ¥æ± è®¾ç½®ä¸º300ä¸ªè¿æ¥,é»˜è®¤ä¸º100
+        options.connectTimeout(15000);// è¿æ¥è¶…æ—¶ï¼Œæ¨è>3000æ¯«ç§’
         options.maxWaitTime(5000); //
-        options.socketTimeout(0);// Ì×½Ó×Ö³¬Ê±Ê±¼ä£¬0ÎŞÏŞÖÆ
-        options.threadsAllowedToBlockForConnectionMultiplier(5000);// Ïß³Ì¶ÓÁĞÊı£¬Èç¹ûÁ¬½ÓÏß³ÌÅÅÂúÁË¶ÓÁĞ¾Í»áÅ×³ö¡°Out of semaphores to get db¡±´íÎó¡£
+        options.socketTimeout(0);// å¥—æ¥å­—è¶…æ—¶æ—¶é—´ï¼Œ0æ— é™åˆ¶
+        options.threadsAllowedToBlockForConnectionMultiplier(5000);// çº¿ç¨‹é˜Ÿåˆ—æ•°ï¼Œå¦‚æœè¿æ¥çº¿ç¨‹æ’æ»¡äº†é˜Ÿåˆ—å°±ä¼šæŠ›å‡ºâ€œOut of semaphores to get dbâ€é”™è¯¯ã€‚
         options.writeConcern(WriteConcern.SAFE);//
         options.build();
     }
 
-    // ------------------------------------¹²ÓÃ·½·¨---------------------------------------------------
+    // ------------------------------------å…±ç”¨æ–¹æ³•---------------------------------------------------
     /**
-     * »ñÈ¡DBÊµÀı - Ö¸¶¨DB
+     * è·å–DBå®ä¾‹ - æŒ‡å®šDB
      * 
      * @param dbName
      * @return
@@ -90,7 +90,7 @@ public enum MongoDBUtil {
     }
 
     /**
-     * »ñÈ¡collection¶ÔÏó - Ö¸¶¨Collection
+     * è·å–collectionå¯¹è±¡ - æŒ‡å®šCollection
      * 
      * @param collName
      * @return
@@ -107,7 +107,7 @@ public enum MongoDBUtil {
     }
 
     /**
-     * ²éÑ¯DBÏÂµÄËùÓĞ±íÃû
+     * æŸ¥è¯¢DBä¸‹çš„æ‰€æœ‰è¡¨å
      */
     public List<String> getAllCollections(String dbName) {
         MongoIterable<String> colls = getDB(dbName).listCollectionNames();
@@ -119,7 +119,7 @@ public enum MongoDBUtil {
     }
 
     /**
-     * »ñÈ¡ËùÓĞÊı¾İ¿âÃû³ÆÁĞ±í
+     * è·å–æ‰€æœ‰æ•°æ®åº“åç§°åˆ—è¡¨
      * 
      * @return
      */
@@ -129,14 +129,14 @@ public enum MongoDBUtil {
     }
 
     /**
-     * É¾³ıÒ»¸öÊı¾İ¿â
+     * åˆ é™¤ä¸€ä¸ªæ•°æ®åº“
      */
     public void dropDB(String dbName) {
         getDB(dbName).drop();
     }
 
     /**
-     * ²éÕÒ¶ÔÏó - ¸ù¾İÖ÷¼ü_id
+     * æŸ¥æ‰¾å¯¹è±¡ - æ ¹æ®ä¸»é”®_id
      * 
      * @param collection
      * @param id
@@ -153,25 +153,25 @@ public enum MongoDBUtil {
         return myDoc;
     }
 
-    /** Í³¼ÆÊı */
+    /** ç»Ÿè®¡æ•° */
     public int getCount(MongoCollection<Document> coll) {
         int count = (int) coll.count();
         return count;
     }
 
-    /** Ìõ¼ş²éÑ¯ */
+    /** æ¡ä»¶æŸ¥è¯¢ */
     public MongoCursor<Document> find(MongoCollection<Document> coll, Bson filter) {
         return coll.find(filter).iterator();
     }
 
-    /** ·ÖÒ³²éÑ¯ */
+    /** åˆ†é¡µæŸ¥è¯¢ */
     public MongoCursor<Document> findByPage(MongoCollection<Document> coll, Bson filter, int pageNo, int pageSize) {
         Bson orderBy = new BasicDBObject("_id", 1);
         return coll.find(filter).sort(orderBy).skip((pageNo - 1) * pageSize).limit(pageSize).iterator();
     }
 
     /**
-     * Í¨¹ıIDÉ¾³ı
+     * é€šè¿‡IDåˆ é™¤
      * 
      * @param coll
      * @param id
@@ -207,7 +207,7 @@ public enum MongoDBUtil {
             return null;
         }
         Bson filter = Filters.eq("_id", _idobj);
-        // coll.replaceOne(filter, newdoc); // ÍêÈ«Ìæ´ú
+        // coll.replaceOne(filter, newdoc); // å®Œå…¨æ›¿ä»£
         coll.updateOne(filter, new Document("$set", newdoc));
         return newdoc;
     }
@@ -217,7 +217,7 @@ public enum MongoDBUtil {
     }
 
     /**
-     * ¹Ø±ÕMongodb
+     * å…³é—­Mongodb
      */
     public void close() {
         if (mongoClient != null) {
@@ -227,7 +227,7 @@ public enum MongoDBUtil {
     }
 
     /**
-     * ²âÊÔÈë¿Ú
+     * æµ‹è¯•å…¥å£
      * 
      * @param args
      */
@@ -237,7 +237,7 @@ public enum MongoDBUtil {
         String collName = "COMMUNITY_BJ";
         MongoCollection<Document> coll = MongoDBUtil.instance.getCollection(dbName, collName);
 
-        // ²åÈë¶àÌõ
+        // æ’å…¥å¤šæ¡
         // for (int i = 1; i <= 4; i++) {
         // Document doc = new Document();
         // doc.put("name", "zhoulf");
@@ -249,12 +249,12 @@ public enum MongoDBUtil {
         // coll.insertOne(doc);
         // }
 
-        // // ¸ù¾İID²éÑ¯
+        // // æ ¹æ®IDæŸ¥è¯¢
         // String id = "556925f34711371df0ddfd4b";
         // Document doc = MongoDBUtil2.instance.findById(coll, id);
         // System.out.println(doc);
 
-        // ²éÑ¯¶à¸ö
+        // æŸ¥è¯¢å¤šä¸ª
         // MongoCursor<Document> cursor1 = coll.find(Filters.eq("name", "zhoulf")).iterator();
         // while (cursor1.hasNext()) {
         // org.bson.Document _doc = (Document) cursor1.next();
@@ -262,25 +262,25 @@ public enum MongoDBUtil {
         // }
         // cursor1.close();
 
-        // ²éÑ¯¶à¸ö
+        // æŸ¥è¯¢å¤šä¸ª
         // MongoCursor<Person> cursor2 = coll.find(Person.class).iterator();
 
-        // É¾³ıÊı¾İ¿â
+        // åˆ é™¤æ•°æ®åº“
         // MongoDBUtil2.instance.dropDB("testdb");
 
-        // É¾³ı±í
+        // åˆ é™¤è¡¨
         // MongoDBUtil2.instance.dropCollection(dbName, collName);
 
-        // ĞŞ¸ÄÊı¾İ
+        // ä¿®æ”¹æ•°æ®
         // String id = "556949504711371c60601b5a";
         // Document newdoc = new Document();
-        // newdoc.put("name", "Ê±ºò");
+        // newdoc.put("name", "æ—¶å€™");
         // MongoDBUtil.instance.updateById(coll, id, newdoc);
 
-        // Í³¼Æ±í
+        // ç»Ÿè®¡è¡¨
         // System.out.println(MongoDBUtil.instance.getCount(coll));
 
-        // ²éÑ¯ËùÓĞ
+        // æŸ¥è¯¢æ‰€æœ‰
         Bson filter = Filters.eq("count", 0);
         MongoDBUtil.instance.find(coll, filter);
 
