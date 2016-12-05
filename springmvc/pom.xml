@@ -46,12 +46,6 @@
 			<artifactId>freemarker</artifactId>
 			<version>${freemarker.version}</version>
 		</dependency>
-		<!-- mongodb -->
-		<dependency>
-			<groupId>org.mongodb</groupId>
-			<artifactId>mongo-java-driver</artifactId>
-			<version>3.4.0</version>
-		</dependency>
 		<!-- weixin4j -->
 		<!-- https://mvnrepository.com/artifact/org.weixin4j/weixin4j -->
 		<dependency>
@@ -131,7 +125,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.ibatis</groupId>
-			<artifactId>ibatis</artifactId>
+			<artifactId>com.springsource.com.ibatis</artifactId>
 			<version>${ibatis.version}</version>
 		</dependency>
 		<dependency>
