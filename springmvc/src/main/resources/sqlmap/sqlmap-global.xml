@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<!-- 系统全局sqlmap信息 -->
+<sqlMap namespace="global">
+
+	<select id="getSequenceValueBySequenceName" parameterClass="java.lang.String"
+		resultClass="long" remapResults="true">
+		<![CDATA[ select $value$.nextval from dual ]]>
+	</select>
+
+	<sql id="globalSortsql">
+		<isNotEmpty prepend="" property="sort">
+			  <![CDATA[ order by $sort$]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="order">
+			  <![CDATA[ $order$]]>
+		</isNotEmpty>
+	</sql>
+
+	<!-- 分页前缀，目前支持三种数据库，mysql，oracle，sqlserver -->
+	<sql id="pageStart">
+		<dynamic>
+			<isNotEmpty property="dbtype">
+				<isEqual prepend="" property="dbtype" compareValue="mysql">
+					<include refid="global.mysql_pageStart" />
+				</isEqual>
+				<isEqual prepend="" property="dbtype" compareValue="oracle">
+					<include refid="global.oracle_pageStart" />
+				</isEqual>
+				<isEqual prepend="" property="dbtype" compareValue="sqlserver">
+					<include refid="global.sqlserver_pageStart" />
+				</isEqual>
+			</isNotEmpty>
+		</dynamic>
+	</sql>
+
+	<!-- 分页后缀，目前支持三种数据库，mysql，oracle，sqlserver -->
+	<sql id="pageEnd">
+		<dynamic>
+			<isNotEmpty property="dbtype">
+				<isEqual prepend="" property="dbtype" compareValue="mysql">
+					<include refid="global.mysql_pageEnd" />
+				</isEqual>
+				<isEqual prepend="" property="dbtype" compareValue="oracle">
+					<include refid="global.oracle_pageEnd" />
+				</isEqual>
+				<isEqual prepend="" property="dbtype" compareValue="sqlserver">
+					<include refid="global.sqlserver_pageEnd" />
+				</isEqual>
+			</isNotEmpty>
+		</dynamic>
+	</sql>
+
+	<!-- mysql分页加前缀以及后缀 -->
+	<sql id="mysql_pageStart">
+		<![CDATA[ ]]>
+	</sql>
+	<sql id="mysql_pageEnd">
+		<dynamic prepend="">
+			<isNotEmpty prepend="" property="rowstartindex">
+				<isNotEmpty prepend="" property="rowendindex">
+					<![CDATA[
+					 limit #rowstartindex#,#rowendindex#
+					]]>
+				</isNotEmpty>
+			</isNotEmpty>
+		</dynamic>
+	</sql>
+
+	<!-- oracle分页加前缀以及后缀 -->
+	<sql id="oracle_pageStart">
+		<![CDATA[
+			select b.*
+			  from (select tb.*, rownum r
+			          from (
+		]]>
+	</sql>
+	<sql id="oracle_pageEnd">
+		<![CDATA[ ) tb) b ]]>
+		<dynamic prepend="">
+			<isNotEmpty prepend="" property="rowstartindex">
+				<isNotEmpty prepend="" property="rowendindex">
+					<![CDATA[ where r>= #rowstartindex# and r <= #rowendindex# ]]>
+				</isNotEmpty>
+			</isNotEmpty>
+		</dynamic>
+	</sql>
+
+
+	<!-- sqlserver分页加前缀以及后缀 -->
+	<sql id="sqlserver_pageStart">
+		<![CDATA[
+			select b.*
+			  from (select tb.* 
+		]]>
+		<![CDATA[ ,ROW_NUMBER() OVER ( ]]>
+		<isNotEmpty prepend="" property="sort">
+			  <![CDATA[ order by $sort$]]>
+		</isNotEmpty>
+		<isEmpty prepend="" property="order">
+			  <![CDATA[ order by id]]>
+		</isEmpty>
+		<isNotEmpty prepend="" property="order">
+			  <![CDATA[ $order$]]>
+		</isNotEmpty>
+		<![CDATA[ ) rownum]]>
+		<![CDATA[
+			from (
+		]]>
+	</sql>
+	<sql id="sqlserver_pageEnd">
+		<![CDATA[ ) tb) b ]]>
+		<dynamic prepend="">
+			<isNotEmpty prepend="" property="rowstartindex">
+				<isNotEmpty prepend="where" property="rowendindex">
+					<![CDATA[
+						rownum>= #rowstartindex#+1 and rownum <= #rowstartindex#+#rowendindex#
+					]]>
+				</isNotEmpty>
+			</isNotEmpty>
+		</dynamic>
+	</sql>
+
+</sqlMap>
+
