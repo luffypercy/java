@@ -7,7 +7,7 @@ public class CodeUtil {
 	/**
 	 * 代码存放目录
 	 */
-	public static String CODE_DIR = new File("generate_code_folder").getAbsolutePath();
+	public static String CODE_DIR = "D:\\data\\GENCOD";
 	/**
 	 * jdbc url
 	 */
@@ -21,7 +21,7 @@ read.jdbc.password=yijiedai123
 	 * 
 	 * 
 	 */
-	public static String JDBC_URL = "jdbc:mysql://192.168.11.13:3306/www_yijiedai_com?characterEncoding=UTF-8";
+	public static String JDBC_URL = "jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8";
 	/**
 	 * jdbc 驱动
 	 */
@@ -29,29 +29,29 @@ read.jdbc.password=yijiedai123
 	/**
 	 * 数据库用户名
 	 */
-	public static String JDBC_USERNAME = "www_yijiedai_com";
+	public static String JDBC_USERNAME = "root";
 	/**
 	 * 数据库密码
 	 */
-	public static String JDBC_PASSWORD = "yijiedai123";
+	public static String JDBC_PASSWORD = "mxd3890558";
 
 	public static void main(String[] args) throws Exception {
 		
 		// 以下参数的名称各位都小写
 		// 表名
-		String tableName = "yjd_debt_record";
+		String tableName = "xc_wx_hbask";
 		// 描述
-		String desc = "逾期债权购买记录";
+		String desc = "微信用户信息表";
 		// model所在的包名
-		String modelNameSpace = "com.yjd.comm.debt.model";
+		String modelNameSpace = "xyxc.wx.model";
 		// service接口所在的包名
-		String serviceNameSpace = "com.yjd.comm.debt.service";
+		String serviceNameSpace = "xyxc.wx.service";
 		// service实现类所在的包名
-		String serviceImplNameSpace = "com.yjd.pub.debt.service.impl";
+		String serviceImplNameSpace = "xyxc.wx.service.impl";
 		// dao接口所在的包名
-		String daoNameSpace = "com.yjd.pub.debt.dao";
+		String daoNameSpace = "xyxc.wx.dao";
 		// 作者
-		String author = "ready percy-chen@hotmail.com";
+		String author = "percy-chen@hotmail.com";
 		CodeMapModel codeMapModel = new CodeMapModel(tableName, modelNameSpace,
 				serviceNameSpace, serviceImplNameSpace, daoNameSpace, null,
 				desc,true);
