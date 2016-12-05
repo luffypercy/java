@@ -1,7 +1,7 @@
 package ${codeMapModel.daoNameSpace}.impl;
 
 import org.springframework.stereotype.Component;
-import com.yjd.comm.base.dao.impl.BaseDaoImpl;
+import cn.springmvc.dao.impl.BaseDaoImpl;
 import ${codeMapModel.modelNameSpace}.${codeMapModel.modelName}Model;
 import ${codeMapModel.daoNameSpace}.I${codeMapModel.modelName}Dao;
 

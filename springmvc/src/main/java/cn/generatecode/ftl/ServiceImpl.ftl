@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import com.yjd.comm.base.dao.IBaseDao;
+import cn.springmvc.dao.impl.BaseDaoImpl;
 import cn.springmvc.service.impl.TopBaseServiceImpl;
 import ${codeMapModel.modelNameSpace}.${codeMapModel.modelName}Model;
 import ${codeMapModel.serviceNameSpace}.I${codeMapModel.modelName}Service;

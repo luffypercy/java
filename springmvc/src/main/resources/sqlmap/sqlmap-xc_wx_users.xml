@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<!-- 微信用户信息表 -->
+<sqlMap namespace="xyxc.wx.model.XcWxUsersModel">
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterClass="xyxc.wx.model.XcWxUsersModel">
+		insert into `xc_wx_users` (
+		<dynamic prepend=" ">  
+			<isNotEmpty prepend=","   property="id">
+			<![CDATA[ `id` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="unionid">
+			<![CDATA[ `unionid` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="openid">
+			<![CDATA[ `openid` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="nickname">
+			<![CDATA[ `nickname` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="sex">
+			<![CDATA[ `sex` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="language">
+			<![CDATA[ `language` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="city">
+			<![CDATA[ `city` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="province">
+			<![CDATA[ `province` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="country">
+			<![CDATA[ `country` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="headimgurl">
+			<![CDATA[ `headimgurl` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="subscribe_time">
+			<![CDATA[ `subscribe_time` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="remark">
+			<![CDATA[ `remark` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="subscribe">
+			<![CDATA[ `subscribe` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="groupid">
+			<![CDATA[ `groupid` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="tagid_list">
+			<![CDATA[ `tagid_list` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="version">
+			<![CDATA[ `version` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="addtime">
+			<![CDATA[ `addtime` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="uptime">
+			<![CDATA[ `uptime` ]]>
+			</isNotEmpty>
+		</dynamic>
+		)
+		values(
+	   <dynamic prepend=" ">  
+			<isNotEmpty prepend=","  property="id">
+			<![CDATA[ #id# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="unionid">
+			<![CDATA[ #unionid# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="openid">
+			<![CDATA[ #openid# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="nickname">
+			<![CDATA[ #nickname# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="sex">
+			<![CDATA[ #sex# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="language">
+			<![CDATA[ #language# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="city">
+			<![CDATA[ #city# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="province">
+			<![CDATA[ #province# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="country">
+			<![CDATA[ #country# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="headimgurl">
+			<![CDATA[ #headimgurl# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="subscribe_time">
+			<![CDATA[ #subscribe_time# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="remark">
+			<![CDATA[ #remark# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="subscribe">
+			<![CDATA[ #subscribe# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="groupid">
+			<![CDATA[ #groupid# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="tagid_list">
+			<![CDATA[ #tagid_list# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="version">
+			<![CDATA[ #version# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="addtime">
+			<![CDATA[ #addtime# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="uptime">
+			<![CDATA[ #uptime# ]]>
+			</isNotEmpty>
+		</dynamic>
+		)
+		<selectKey resultClass="java.lang.Long" keyProperty="id" type="post"> 
+		<![CDATA[select last_insert_id() as id ]]>
+		</selectKey>
+	</insert>
+	
+	<!-- 批量插入 -->
+	<insert id="insertBatch" parameterClass="java.util.List">
+		insert into `xc_wx_users` (`id`,`unionid`,`openid`,`nickname`,`sex`,`language`,`city`,`province`,`country`,`headimgurl`,`subscribe_time`,`remark`,`subscribe`,`groupid`,`tagid_list`,`version`,`addtime`,`uptime`)
+		values
+		<iterate conjunction=",">
+		(#item[].id#,#item[].unionid#,#item[].openid#,#item[].nickname#,#item[].sex#,#item[].language#,#item[].city#,#item[].province#,#item[].country#,#item[].headimgurl#,#item[].subscribe_time#,#item[].remark#,#item[].subscribe#,#item[].groupid#,#item[].tagid_list#,#item[].version#,#item[].addtime#,#item[].uptime#)
+		</iterate>
+	</insert>
+
+	<!-- 修改 -->
+	<update id="update" parameterClass="xyxc.wx.model.XcWxUsersModel">
+		update `xc_wx_users` 
+		<dynamic prepend="SET ">  
+			<isNotEmpty prepend=","   property="unionid">
+			<![CDATA[ `unionid` = #unionid# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="openid">
+			<![CDATA[ `openid` = #openid# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="nickname">
+			<![CDATA[ `nickname` = #nickname# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="sex">
+			<![CDATA[ `sex` = #sex# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="language">
+			<![CDATA[ `language` = #language# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="city">
+			<![CDATA[ `city` = #city# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="province">
+			<![CDATA[ `province` = #province# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="country">
+			<![CDATA[ `country` = #country# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="headimgurl">
+			<![CDATA[ `headimgurl` = #headimgurl# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="subscribe_time">
+			<![CDATA[ `subscribe_time` = #subscribe_time# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="remark">
+			<![CDATA[ `remark` = #remark# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="subscribe">
+			<![CDATA[ `subscribe` = #subscribe# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="groupid">
+			<![CDATA[ `groupid` = #groupid# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="tagid_list">
+			<![CDATA[ `tagid_list` = #tagid_list# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="version">
+			<![CDATA[ `version` = #version# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="addtime">
+			<![CDATA[ `addtime` = #addtime# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="uptime">
+			<![CDATA[ `uptime` = #uptime# ]]>
+			</isNotEmpty>
+		 </dynamic>  
+		<dynamic prepend="where">
+			<isNotEmpty prepend="AND" property="id">
+			<![CDATA[ `id` = #id# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="where_version">
+			<![CDATA[ `version` = #where_version# ]]>
+			</isNotEmpty>
+		</dynamic>
+	</update>
+	
+	<!-- 修改 -->
+	<update id="updateByMap" parameterClass="map">
+		update `xc_wx_users` 
+		<dynamic prepend="SET ">  
+			<isNotEmpty prepend=","   property="unionid">
+			<![CDATA[ `unionid` = #unionid# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="openid">
+			<![CDATA[ `openid` = #openid# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="nickname">
+			<![CDATA[ `nickname` = #nickname# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="sex">
+			<![CDATA[ `sex` = #sex# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="language">
+			<![CDATA[ `language` = #language# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="city">
+			<![CDATA[ `city` = #city# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="province">
+			<![CDATA[ `province` = #province# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="country">
+			<![CDATA[ `country` = #country# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="headimgurl">
+			<![CDATA[ `headimgurl` = #headimgurl# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="subscribe_time">
+			<![CDATA[ `subscribe_time` = #subscribe_time# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="remark">
+			<![CDATA[ `remark` = #remark# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="subscribe">
+			<![CDATA[ `subscribe` = #subscribe# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="groupid">
+			<![CDATA[ `groupid` = #groupid# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="tagid_list">
+			<![CDATA[ `tagid_list` = #tagid_list# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="version">
+			<![CDATA[ `version` = #version# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="addtime">
+			<![CDATA[ `addtime` = #addtime# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="uptime">
+			<![CDATA[ `uptime` = #uptime# ]]>
+			</isNotEmpty>
+		 </dynamic>  
+		<dynamic prepend="where">
+			<isNotEmpty prepend="AND" property="id">
+			<![CDATA[ `id` = #id# ]]>
+			</isNotEmpty>
+		</dynamic>
+	</update>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterClass="map">
+		<![CDATA[
+			delete from `xc_wx_users`
+		]]>
+		<dynamic prepend="where">
+			<isNotEmpty prepend="AND" property="id">
+			<![CDATA[ `id` = #id# ]]>
+			</isNotEmpty>
+		</dynamic>
+	</delete>
+
+	<sql id="findSql">
+		<dynamic prepend="where">
+			<isNotEmpty prepend="AND" property="id">
+			<![CDATA[ a.`id` = #id# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="unionid">
+			<![CDATA[ a.`unionid` = #unionid# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="openid">
+			<![CDATA[ a.`openid` = #openid# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="nickname">
+			<![CDATA[ a.`nickname` = #nickname# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sex">
+			<![CDATA[ a.`sex` = #sex# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="language">
+			<![CDATA[ a.`language` = #language# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="city">
+			<![CDATA[ a.`city` = #city# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="province">
+			<![CDATA[ a.`province` = #province# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="country">
+			<![CDATA[ a.`country` = #country# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="headimgurl">
+			<![CDATA[ a.`headimgurl` = #headimgurl# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="subscribe_time">
+			<![CDATA[ a.`subscribe_time` = #subscribe_time# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="remark">
+			<![CDATA[ a.`remark` = #remark# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="subscribe">
+			<![CDATA[ a.`subscribe` = #subscribe# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="groupid">
+			<![CDATA[ a.`groupid` = #groupid# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="tagid_list">
+			<![CDATA[ a.`tagid_list` = #tagid_list# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="version">
+			<![CDATA[ a.`version` = #version# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="addtime">
+			<![CDATA[ a.`addtime` = #addtime# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="uptime">
+			<![CDATA[ a.`uptime` = #uptime# ]]>
+			</isNotEmpty>
+		</dynamic>
+	</sql>
+	
+	<select id="getModelListCount" parameterClass="map"
+		resultClass="int">
+		<![CDATA[
+			select count(*)
+			  from `xc_wx_users` a
+		]]>
+		<include refid="findSql" />
+	</select>
+
+	<select id="getModelList" parameterClass="map"
+		resultClass="xyxc.wx.model.XcWxUsersModel">
+		<include refid="global.pageStart" />
+		<![CDATA[
+			select 
+			   a.`id`,
+			   a.`unionid`,
+			   a.`openid`,
+			   a.`nickname`,
+			   a.`sex`,
+			   a.`language`,
+			   a.`city`,
+			   a.`province`,
+			   a.`country`,
+			   a.`headimgurl`,
+			   a.`subscribe_time`,
+			   a.`remark`,
+			   a.`subscribe`,
+			   a.`groupid`,
+			   a.`tagid_list`,
+			   a.`version`,
+			   a.`addtime`,
+			   a.`uptime`
+			FROM `xc_wx_users`  a
+		]]>
+		<include refid="findSql" />
+		<include refid="global.globalSortsql" />
+		<include refid="global.pageEnd" />
+	</select>
+
+</sqlMap>
+

@@ -15,24 +15,16 @@
 <table class="ui-table">
 		        <thead>
 		            <tr>
-					    <th>队名</th>
-						<th class="text-r">队员</th>
-						<th class="text-r">管理员</th>
+					    <th>openid</th>
+						<th class="text-r">nickname</th>
 					    <!-- <th>激活时间</th> -->
-						<th>有效期</th>
 		            </tr>
 		        </thead>
 		        <tbody>
-		            <c:forEach items="${dblist}" var="item">
+		            <c:forEach items="${users}" var="item">
 		             <tr>
-					    <td>${item}</td>
-					    <td>
-					     <c:forEach items="${colist[item] }" var="coi">
-					     <th>
-					     ${coi }
-					     </th>
-		           		 </c:forEach>
-					    </td>
+					   <td>${item.openid }</td>
+   					   <td>${item.nickname }</td>
 		            </tr>
 		            </c:forEach>
 		            

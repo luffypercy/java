@@ -7,4 +7,7 @@ PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
 		lazyLoadingEnabled="true" errorTracingEnabled="true" maxRequests="1024"
 		maxSessions="1000" maxTransactions="16" useStatementNamespaces="true" />
 	<sqlMap resource="sqlmap/sqlmap-global.xml" />
+	
+	<sqlMap resource="sqlmap/sqlmap-xc_wx_users.xml" />
+	<sqlMap resource="sqlmap/sqlmap-xc_wx_hbask.xml" />
 </sqlMapConfig>

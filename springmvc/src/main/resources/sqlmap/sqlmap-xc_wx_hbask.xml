@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<!-- 微信用户信息表 -->
+<sqlMap namespace="xyxc.wx.model.XcWxHbaskModel">
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterClass="xyxc.wx.model.XcWxHbaskModel">
+		insert into `xc_wx_hbask` (
+		<dynamic prepend=" ">  
+			<isNotEmpty prepend=","   property="id">
+			<![CDATA[ `id` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="wx_user_id">
+			<![CDATA[ `wx_user_id` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="content">
+			<![CDATA[ `content` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="addtime">
+			<![CDATA[ `addtime` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="status">
+			<![CDATA[ `status` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="price">
+			<![CDATA[ `price` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="uptime">
+			<![CDATA[ `uptime` ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="sendtime">
+			<![CDATA[ `sendtime` ]]>
+			</isNotEmpty>
+		</dynamic>
+		)
+		values(
+	   <dynamic prepend=" ">  
+			<isNotEmpty prepend=","  property="id">
+			<![CDATA[ #id# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="wx_user_id">
+			<![CDATA[ #wx_user_id# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="content">
+			<![CDATA[ #content# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="addtime">
+			<![CDATA[ #addtime# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="status">
+			<![CDATA[ #status# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="price">
+			<![CDATA[ #price# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="uptime">
+			<![CDATA[ #uptime# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","  property="sendtime">
+			<![CDATA[ #sendtime# ]]>
+			</isNotEmpty>
+		</dynamic>
+		)
+		<selectKey resultClass="java.lang.Long" keyProperty="id" type="post"> 
+		<![CDATA[select last_insert_id() as id ]]>
+		</selectKey>
+	</insert>
+	
+	<!-- 批量插入 -->
+	<insert id="insertBatch" parameterClass="java.util.List">
+		insert into `xc_wx_hbask` (`id`,`wx_user_id`,`content`,`addtime`,`status`,`price`,`uptime`,`sendtime`)
+		values
+		<iterate conjunction=",">
+		(#item[].id#,#item[].wx_user_id#,#item[].content#,#item[].addtime#,#item[].status#,#item[].price#,#item[].uptime#,#item[].sendtime#)
+		</iterate>
+	</insert>
+
+	<!-- 修改 -->
+	<update id="update" parameterClass="xyxc.wx.model.XcWxHbaskModel">
+		update `xc_wx_hbask` 
+		<dynamic prepend="SET ">  
+			<isNotEmpty prepend=","   property="wx_user_id">
+			<![CDATA[ `wx_user_id` = #wx_user_id# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="content">
+			<![CDATA[ `content` = #content# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="addtime">
+			<![CDATA[ `addtime` = #addtime# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="status">
+			<![CDATA[ `status` = #status# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="price">
+			<![CDATA[ `price` = #price# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="uptime">
+			<![CDATA[ `uptime` = #uptime# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="sendtime">
+			<![CDATA[ `sendtime` = #sendtime# ]]>
+			</isNotEmpty>
+		 </dynamic>  
+		<dynamic prepend="where">
+			<isNotEmpty prepend="AND" property="id">
+			<![CDATA[ `id` = #id# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="where_version">
+			<![CDATA[ `version` = #where_version# ]]>
+			</isNotEmpty>
+		</dynamic>
+	</update>
+	
+	<!-- 修改 -->
+	<update id="updateByMap" parameterClass="map">
+		update `xc_wx_hbask` 
+		<dynamic prepend="SET ">  
+			<isNotEmpty prepend=","   property="wx_user_id">
+			<![CDATA[ `wx_user_id` = #wx_user_id# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="content">
+			<![CDATA[ `content` = #content# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="addtime">
+			<![CDATA[ `addtime` = #addtime# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="status">
+			<![CDATA[ `status` = #status# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="price">
+			<![CDATA[ `price` = #price# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="uptime">
+			<![CDATA[ `uptime` = #uptime# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend=","   property="sendtime">
+			<![CDATA[ `sendtime` = #sendtime# ]]>
+			</isNotEmpty>
+		 </dynamic>  
+		<dynamic prepend="where">
+			<isNotEmpty prepend="AND" property="id">
+			<![CDATA[ `id` = #id# ]]>
+			</isNotEmpty>
+		</dynamic>
+	</update>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterClass="map">
+		<![CDATA[
+			delete from `xc_wx_hbask`
+		]]>
+		<dynamic prepend="where">
+			<isNotEmpty prepend="AND" property="id">
+			<![CDATA[ `id` = #id# ]]>
+			</isNotEmpty>
+		</dynamic>
+	</delete>
+
+	<sql id="findSql">
+		<dynamic prepend="where">
+			<isNotEmpty prepend="AND" property="id">
+			<![CDATA[ a.`id` = #id# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="wx_user_id">
+			<![CDATA[ a.`wx_user_id` = #wx_user_id# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="content">
+			<![CDATA[ a.`content` = #content# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="addtime">
+			<![CDATA[ a.`addtime` = #addtime# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+			<![CDATA[ a.`status` = #status# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="price">
+			<![CDATA[ a.`price` = #price# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="uptime">
+			<![CDATA[ a.`uptime` = #uptime# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sendtime">
+			<![CDATA[ a.`sendtime` = #sendtime# ]]>
+			</isNotEmpty>
+		</dynamic>
+	</sql>
+	
+	<select id="getModelListCount" parameterClass="map"
+		resultClass="int">
+		<![CDATA[
+			select count(*)
+			  from `xc_wx_hbask` a
+		]]>
+		<include refid="findSql" />
+	</select>
+
+	<select id="getModelList" parameterClass="map"
+		resultClass="xyxc.wx.model.XcWxHbaskModel">
+		<include refid="global.pageStart" />
+		<![CDATA[
+			select 
+			   a.`id`,
+			   a.`wx_user_id`,
+			   a.`content`,
+			   a.`addtime`,
+			   a.`status`,
+			   a.`price`,
+			   a.`uptime`,
+			   a.`sendtime`
+			FROM `xc_wx_hbask`  a
+		]]>
+		<include refid="findSql" />
+		<include refid="global.globalSortsql" />
+		<include refid="global.pageEnd" />
+	</select>
+
+</sqlMap>
+

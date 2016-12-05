@@ -6,7 +6,6 @@ import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,36 +15,35 @@ import org.weixin4j.spi.IMessageHandler;
 import org.weixin4j.util.TokenUtil;
 
 /**
- * æ–°æ‰‹æ¥å…¥
+ * ĞÂÊÖ½ÓÈë
  *
  * @author qsyang
  * @version 1.0
  */
 @Controller
 @RequestMapping("/api/weixin4j")
-@Scope("prototype")
 public class CustomWeixinUrlFilter {
 
     @RequestMapping(method = RequestMethod.GET)
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        //å¾®ä¿¡æœåŠ¡å™¨å°†å‘é€GETè¯·æ±‚åˆ°å¡«å†™çš„URLä¸Š,è¿™é‡Œéœ€è¦åˆ¤å®šæ˜¯å¦ä¸ºGETè¯·æ±‚
+        //Î¢ĞÅ·şÎñÆ÷½«·¢ËÍGETÇëÇóµ½ÌîĞ´µÄURLÉÏ,ÕâÀïĞèÒªÅĞ¶¨ÊÇ·ñÎªGETÇëÇó
         boolean isGet = request.getMethod().toLowerCase().equals("get");
         if (Configuration.isDebug()) {
-            System.out.println("è·å¾—å¾®ä¿¡è¯·æ±‚:" + request.getMethod() + " æ–¹å¼");
-            System.out.println("å¾®ä¿¡è¯·æ±‚URL:" + request.getServletPath());
+            System.out.println("»ñµÃÎ¢ĞÅÇëÇó:" + request.getMethod() + " ·½Ê½");
+            System.out.println("Î¢ĞÅÇëÇóURL:" + request.getServletPath());
         }
-        //æ¶ˆæ¯æ¥æºå¯é æ€§éªŒè¯
-        String signature = request.getParameter("signature");// å¾®ä¿¡åŠ å¯†ç­¾å
-        String timestamp = request.getParameter("timestamp");// æ—¶é—´æˆ³
-        String nonce = request.getParameter("nonce");       // éšæœºæ•°
-        //Tokenä¸ºweixin4j.propertiesä¸­é…ç½®çš„Token
+        //ÏûÏ¢À´Ô´¿É¿¿ĞÔÑéÖ¤
+        String signature = request.getParameter("signature");// Î¢ĞÅ¼ÓÃÜÇ©Ãû
+        String timestamp = request.getParameter("timestamp");// Ê±¼ä´Á
+        String nonce = request.getParameter("nonce");       // Ëæ»úÊı
+        //TokenÎªweixin4j.propertiesÖĞÅäÖÃµÄToken
         String token = TokenUtil.get();
-        //1.éªŒè¯æ¶ˆæ¯çœŸå®æ€§
-        //http://mp.weixin.qq.com/wiki/index.php?title=éªŒè¯æ¶ˆæ¯çœŸå®æ€§
-        //URLä¸ºhttp://www.weixin4j.org/api/å…¬ä¼—å·
-        //æˆä¸ºå¼€å‘è€…éªŒè¯
+        //1.ÑéÖ¤ÏûÏ¢ÕæÊµĞÔ
+        //http://mp.weixin.qq.com/wiki/index.php?title=ÑéÖ¤ÏûÏ¢ÕæÊµĞÔ
+        //URLÎªhttp://www.weixin4j.org/api/¹«ÖÚºÅ
+        //³ÉÎª¿ª·¢ÕßÑéÖ¤
         String echostr = request.getParameter("echostr");   //
-        //ç¡®è®¤æ­¤æ¬¡GETè¯·æ±‚æ¥è‡ªå¾®ä¿¡æœåŠ¡å™¨ï¼ŒåŸæ ·è¿”å›echostrå‚æ•°å†…å®¹ï¼Œåˆ™æ¥å…¥ç”Ÿæ•ˆï¼Œæˆä¸ºå¼€å‘è€…æˆåŠŸï¼Œå¦åˆ™æ¥å…¥å¤±è´¥
+        //È·ÈÏ´Ë´ÎGETÇëÇóÀ´×ÔÎ¢ĞÅ·şÎñÆ÷£¬Ô­Ñù·µ»Øechostr²ÎÊıÄÚÈİ£¬Ôò½ÓÈëÉúĞ§£¬³ÉÎª¿ª·¢Õß³É¹¦£¬·ñÔò½ÓÈëÊ§°Ü
         if (TokenUtil.checkSignature(token, signature, timestamp, nonce)) {
             response.getWriter().write(echostr);
         }
@@ -56,19 +54,19 @@ public class CustomWeixinUrlFilter {
         try {
             response.setCharacterEncoding("UTF-8");
             response.setContentType("text/xml");
-            //è·å–POSTæµ
+            //»ñÈ¡POSTÁ÷
             ServletInputStream in = request.getInputStream();
             if (Configuration.isDebug()) {
-                System.out.println("æ¥æ”¶åˆ°å¾®ä¿¡è¾“å…¥æµ,å‡†å¤‡å¤„ç†...");
+                System.out.println("½ÓÊÕµ½Î¢ĞÅÊäÈëÁ÷,×¼±¸´¦Àí...");
             }
 
-            //å¤„ç†è¾“å…¥æ¶ˆæ¯ï¼Œè¿”å›ç»“æœ
+            //´¦ÀíÊäÈëÏûÏ¢£¬·µ»Ø½á¹û
             IMessageHandler messageHandler = HandlerFactory.getMessageHandler();
-            //å¤„ç†è¾“å…¥æ¶ˆæ¯ï¼Œè¿”å›ç»“æœ
+            //´¦ÀíÊäÈëÏûÏ¢£¬·µ»Ø½á¹û
             String xml = messageHandler.invoke(in);
-            //è¿”å›ç»“æœ
+            //·µ»Ø½á¹û
             response.getWriter().write(xml);
-            //è¿”å›ç»“æœ
+            //·µ»Ø½á¹û
             response.getWriter().write(xml);
         } catch (Exception ex) {
             ex.printStackTrace();
