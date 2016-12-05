@@ -11,7 +11,7 @@
 		<!-- spring版本号 -->
 		<spring.version>3.2.4.RELEASE</spring.version>
 		<!-- mybatis版本号 -->
-		<mybatis.version>3.2.4</mybatis.version>
+		<mybatis.version>3.1.1</mybatis.version>
 		<!-- log4j日志文件管理包版本 -->
 		<slf4j.version>1.6.6</slf4j.version>
 		<log4j.version>1.2.9</log4j.version>
@@ -89,23 +89,23 @@
 		<!-- springframe end -->
 
 		<!-- mybatis核心包 -->
-		<!-- <dependency>
+		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 			<version>${mybatis.version}</version>
 		</dependency>
-		mybatis/spring包
+	<!-- 	mybatis/spring包 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.2</version>
 		</dependency>
-		mysql驱动包
+	<!-- 	mysql驱动包 -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.29</version>
-		</dependency> -->
+		</dependency>
 		<!-- junit测试包 -->
 		
 		<dependency>  
