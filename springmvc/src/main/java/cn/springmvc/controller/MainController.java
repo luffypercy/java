@@ -54,13 +54,13 @@ public class MainController {
 			  for(String coname:MongoDBUtil.instance.getAllCollections("admin")){
 				  MongoCollection<Document> ts =MongoDBUtil.instance.getDB(key).getCollection(coname);
 				  
-			         System.out.println("¼¯ºÏ test Ñ¡Ôñ³É¹¦");
+			         System.out.println("é›†åˆ test é€‰æ‹©æˆåŠŸ");
 			         
-			         //¼ìË÷ËùÓĞÎÄµµ  
+			         //æ£€ç´¢æ‰€æœ‰æ–‡æ¡£  
 			         /** 
-			         * 1. »ñÈ¡µü´úÆ÷FindIterable<Document> 
-			         * 2. »ñÈ¡ÓÎ±êMongoCursor<Document> 
-			         * 3. Í¨¹ıÓÎ±ê±éÀú¼ìË÷³öµÄÎÄµµ¼¯ºÏ 
+			         * 1. è·å–è¿­ä»£å™¨FindIterable<Document> 
+			         * 2. è·å–æ¸¸æ ‡MongoCursor<Document> 
+			         * 3. é€šè¿‡æ¸¸æ ‡éå†æ£€ç´¢å‡ºçš„æ–‡æ¡£é›†åˆ 
 			         * */  
 			         FindIterable<Document> findIterable = ts.find();  
 			         MongoCursor<Document> mongoCursor = findIterable.iterator();  
