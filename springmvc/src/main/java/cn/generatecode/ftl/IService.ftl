@@ -1,6 +1,6 @@
 package ${codeMapModel.serviceNameSpace};
 
-import com.yjd.comm.base.service.IBaseService;
+import cn.springmvc.service.IBaseService;
 import ${codeMapModel.modelNameSpace}.${codeMapModel.modelName}Model;
 
 /**

@@ -1,6 +1,6 @@
 package ${codeMapModel.modelNameSpace};
 
-import com.yjd.comm.base.model.Model;
+import cn.springmvc.model.Model;
 
 /**
  * <b>description</b>：${codeMapModel.desc}模型<br>

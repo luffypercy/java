@@ -1,6 +1,6 @@
 package ${codeMapModel.daoNameSpace};
 
-import com.yjd.comm.base.dao.IBaseDao;
+import cn.springmvc.dao.IBaseDao;
 
 /**
  * <b>description</b>：${codeMapModel.desc}数据访问接口<br>

@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.yjd.comm.base.dao.IBaseDao;
-import com.yjd.comm.base.service.impl.BaseServiceImpl;
+import cn.springmvc.service.impl.TopBaseServiceImpl;
 import ${codeMapModel.modelNameSpace}.${codeMapModel.modelName}Model;
 import ${codeMapModel.serviceNameSpace}.I${codeMapModel.modelName}Service;
 import ${codeMapModel.daoNameSpace}.I${codeMapModel.modelName}Dao;
@@ -18,7 +18,7 @@ import ${codeMapModel.daoNameSpace}.I${codeMapModel.modelName}Dao;
  * <b>author</b>：  ${codeMapModel.author}
  */
 @Service("${codeMapModel.lmodelName}Service")
-public class ${codeMapModel.modelName}ServiceImpl extends BaseServiceImpl implements I${codeMapModel.modelName}Service {
+public class ${codeMapModel.modelName}ServiceImpl extends TopBaseServiceImpl implements I${codeMapModel.modelName}Service {
 
 	/**
 	 * 插入
