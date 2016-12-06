@@ -2,16 +2,18 @@ package cn.springmvc.controller;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.foxinmy.weixin4j.mp.WeixinProxy;
 
 import cn.springmvc.enums.DbWREnums;
 import cn.springmvc.util.FrameUtil;
 import xyxc.wx.model.XcWxUsersModel;
 import xyxc.wx.service.IXcWxUsersService;
-
-import javax.annotation.Resource;
 
 
 @Controller
@@ -32,6 +34,8 @@ public class MainController extends BaseControl{
 		return "index";
 	}
 	
-	
+	public void test(){
+		WeixinProxy weixinProxy = new WeixinProxy();
+	}
 	
 }
