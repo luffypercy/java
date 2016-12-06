@@ -1,6 +1,0 @@
-<!-- 逾期债权购买记录远程服务 -->
-<bean name="/debtRecordService"
-	class="org.springframework.remoting.caucho.HessianServiceExporter">
-	<property name="service" ref="debtRecordService" />
-	<property name="serviceInterface" value="com.yjd.comm.debt.service.IDebtRecordService" />
-</bean>

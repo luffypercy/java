@@ -14,4 +14,6 @@
 	default-autowire="byName">
 	<!-- 公共部分 -->
 	<import resource="spring/spring-common.xml" />
+	<context:component-scan base-package="xyxc.wx" />
+	<context:component-scan base-package="cn.springmvc" />
 </beans>

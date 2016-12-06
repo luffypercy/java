@@ -21,7 +21,7 @@
 		            </tr>
 		        </thead>
 		        <tbody>
-		            <c:forEach items="${users}" var="item">
+		            <c:forEach items="${userList}" var="item">
 		             <tr>
 					   <td>${item.openid }</td>
    					   <td>${item.nickname }</td>
