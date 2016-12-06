@@ -34,18 +34,17 @@ public class MainController extends BaseControl{
 	@RequestMapping("index")
 	public String index() throws Exception{
 		System.out.println(111);
-		test();
 		List<XcWxUsersModel> users=this.xcWxUsersService.getModelList(FrameUtil.newHashMap(), DbWREnums.WRITE);
 		request.setAttribute("userList", users);
-		
 		return "index";
 	}
 	
-	@RequestMapping("index")
 	public void test() throws Exception{
 		List<User> us=this.weixinProxy.getAllFollowing();
+		List<String> openids=FrameUtil.newArrayList();
 		for(User u:us){
-			XcWxUsersModel xu= this.xcWxUsersService.getModelOne(FrameUtil.newHashMap("unionid",u.getUnionId()), DbWREnums.WRITE);
+			u=this.weixinProxy.getUser(u.getOpenId());
+			XcWxUsersModel xu= this.xcWxUsersService.getModelOne(FrameUtil.newHashMap("openid",u.getOpenId()), DbWREnums.WRITE);
 			if(xu==null){
 				xu=new XcWxUsersModel();
 				xu.copyProperties(u);
@@ -55,6 +54,7 @@ public class MainController extends BaseControl{
 				this.xcWxUsersService.update(xu);
 			}
 		}
+		
 	}
 	
 }

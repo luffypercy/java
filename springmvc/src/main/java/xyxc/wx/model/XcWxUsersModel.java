@@ -97,7 +97,7 @@ public class XcWxUsersModel extends Model{
 		this.setGroupid(u.getGroupId());
 		this.setHeadimgurl(u.getHeadimgurl());
 		this.setLanguage(u.getLanguage());
-		this.setNickname(u.getNickName());
+		this.setNickname(u.getNickName().replaceAll("[\\x{10000}-\\x{10FFFF}]", ""));
 		this.setProvince(u.getProvince());
 		this.setRemark(u.getRemark());
 		this.setSubscribe(u.getSubscribeTime()>0l?0:1);

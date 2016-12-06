@@ -17,6 +17,7 @@
 		            <tr>
 					    <th>openid</th>
 						<th class="text-r">nickname</th>
+						<th class="text-r">头像</th>
 					    <!-- <th>激活时间</th> -->
 		            </tr>
 		        </thead>
@@ -25,6 +26,7 @@
 		             <tr>
 					   <td>${item.openid }</td>
    					   <td>${item.nickname }</td>
+   					    <td><img src="${item.headimgurl }" height="30px" width="30px"></td>
 		            </tr>
 		            </c:forEach>
 		            
