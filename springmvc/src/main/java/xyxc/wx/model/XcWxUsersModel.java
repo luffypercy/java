@@ -1,6 +1,9 @@
 package xyxc.wx.model;
 
+import com.foxinmy.weixin4j.mp.model.User;
+
 import cn.springmvc.model.Model;
+import cn.springmvc.util.FrameUtil;
 
 /**
  * <b>description</b>：微信用户信息表模型<br>
@@ -17,7 +20,7 @@ public class XcWxUsersModel extends Model{
 	 /*
 	  * 
 	  */
-	private java.lang.Integer id;
+	private java.lang.Long id;
 	 /*
 	  *只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。
  
@@ -58,7 +61,7 @@ public class XcWxUsersModel extends Model{
 	 /*
 	  *关注时间用户关注时间，为时间戳。如果用户曾多次关注，则取最后关注时间 
 	  */
-	private java.lang.Integer subscribe_time;
+	private java.lang.Long subscribe_time;
 	 /*
 	  *公众号运营者对粉丝的备注，公众号运营者可在微信公众平台用户管理界面对粉丝添加备注 
 	  */
@@ -78,21 +81,35 @@ public class XcWxUsersModel extends Model{
 	 /*
 	  * 
 	  */
-	private java.lang.Integer version;
+	private java.lang.Long addtime;
 	 /*
 	  * 
 	  */
-	private java.lang.Integer addtime;
-	 /*
-	  * 
-	  */
-	private java.lang.Integer uptime;
+	private java.lang.Long uptime;
+	
+	public void copyProperties(User u){
+		Long now=FrameUtil.getTime();
+		this.setCity(u.getCity());
+		this.setUnionid(u.getUnionId());
+		this.setOpenid(u.getOpenId());
+		this.setCountry(u.getCountry());
+		this.setAddtime(now);
+		this.setGroupid(u.getGroupId());
+		this.setHeadimgurl(u.getHeadimgurl());
+		this.setLanguage(u.getLanguage());
+		this.setNickname(u.getNickName());
+		this.setProvince(u.getProvince());
+		this.setRemark(u.getRemark());
+		this.setSubscribe(u.getSubscribeTime()>0l?0:1);
+		this.setSubscribe_time(u.getSubscribeTime());
+		this.setUptime(now);
+	}
 
-	public java.lang.Integer getId() {
+	public java.lang.Long getId() {
 		return id;
 	}
 
-	public void setId(java.lang.Integer id) {
+	public void setId(java.lang.Long id) {
 		this.id = id;
 	}
 	public java.lang.String getUnionid() {
@@ -158,11 +175,11 @@ public class XcWxUsersModel extends Model{
 	public void setHeadimgurl(java.lang.String headimgurl) {
 		this.headimgurl = headimgurl;
 	}
-	public java.lang.Integer getSubscribe_time() {
+	public java.lang.Long getSubscribe_time() {
 		return subscribe_time;
 	}
 
-	public void setSubscribe_time(java.lang.Integer subscribe_time) {
+	public void setSubscribe_time(java.lang.Long subscribe_time) {
 		this.subscribe_time = subscribe_time;
 	}
 	public java.lang.String getRemark() {
@@ -193,18 +210,18 @@ public class XcWxUsersModel extends Model{
 	public void setTagid_list(java.lang.String tagid_list) {
 		this.tagid_list = tagid_list;
 	}
-	public java.lang.Integer getAddtime() {
+	public java.lang.Long getAddtime() {
 		return addtime;
 	}
 
-	public void setAddtime(java.lang.Integer addtime) {
+	public void setAddtime(java.lang.Long addtime) {
 		this.addtime = addtime;
 	}
-	public java.lang.Integer getUptime() {
+	public java.lang.Long getUptime() {
 		return uptime;
 	}
 
-	public void setUptime(java.lang.Integer uptime) {
+	public void setUptime(java.lang.Long uptime) {
 		this.uptime = uptime;
 	}
 
