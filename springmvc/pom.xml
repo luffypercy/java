@@ -18,6 +18,7 @@
 		<freemarker.version>2.3.19</freemarker.version>
 		<ibatis.sqlmap.version>2.3.0</ibatis.sqlmap.version>
 		<ibatis.version>2.3.4.726</ibatis.version>
+		<weixin4j.version>1.7.2</weixin4j.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -49,9 +50,14 @@
 		<!-- weixin4j -->
 		<!-- https://mvnrepository.com/artifact/org.weixin4j/weixin4j -->
 		<dependency>
-			<groupId>org.weixin4j</groupId>
-			<artifactId>weixin4j</artifactId>
-			<version>0.0.7</version>
+		  <groupId>com.foxinmy</groupId>
+		  <artifactId>weixin4j-base</artifactId>
+		  <version>${weixin4j.version}</version>
+		</dependency>
+		<dependency>
+		  <groupId>com.foxinmy</groupId>
+		  <artifactId>weixin4j-mp</artifactId>
+		  <version>${weixin4j.version}</version>
 		</dependency>
 		<!-- spring核心包 -->
 		<!-- springframe start -->
