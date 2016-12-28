@@ -1,7 +1,6 @@
 package cn.springmvc.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,9 +10,11 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import cn.springmvc.dto.OperParamDto;
 import cn.springmvc.enums.Constant.ResultEnum;
 import cn.springmvc.model.Model;
 import cn.springmvc.model.ResultModel;
+import cn.springmvc.util.AdminDataUtil;
 import cn.springmvc.util.FrameUtil;
 import cn.springmvc.util.ServletUtil;
 import cn.springmvc.util.StringUtil;
@@ -34,6 +35,14 @@ public abstract class BaseControl {
 
 	public static final String RESULT_PAGE = "/exception/operateException";
 	
+	/**
+	 * 获取操作信息
+	 * 
+	 * @return
+	 */
+	public OperParamDto getOperParamDto() {
+		return AdminDataUtil.getOperParamDto(request, response);
+	}
 	
 	/**
 	 * 将request中的数据绑定到当前control对应的model中
